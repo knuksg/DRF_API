@@ -9,14 +9,15 @@ from rest_framework.parsers import JSONParser
 @csrf_exempt
 def account(request):
     if request.method == 'GET':
+        # 전체 회원 조회
         query_set = User.objects.all()
         serializer = UserSerializer(query_set, many=True)
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
+        # 회원 가입
         data = JSONParser().parse(request)
-        print('test2')
-        data['mbti'] = 'eeee'
+        data['mbti'] = None
         serializer = UserSerializer(data=data)
         print('test3')
         if serializer.is_valid():
