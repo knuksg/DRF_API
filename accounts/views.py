@@ -15,7 +15,7 @@ def account(request):
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
-        serializer = UserSerializer(data=data)
+        serializer = UserSerializer(mbti='eeee', data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=201)
