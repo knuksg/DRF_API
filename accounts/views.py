@@ -14,11 +14,16 @@ def account(request):
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
+        print('test')
         data = JSONParser().parse(request)
+        print('test2')
         serializer = UserSerializer(data=data, mbti="test")
+        print('test3')
         if serializer.is_valid():
+            print('test4')
             serializer.save()
             return JsonResponse(serializer.data, status=201)
+        print('test5')
         return JsonResponse(serializer.errors, status=400)
 
 @csrf_exempt
