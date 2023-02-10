@@ -16,6 +16,8 @@ def account(request):
     elif request.method == 'POST':
         print('test')
         print(request)
+        if request.content_type != 'application/json':
+            return JsonResponse({'error': 'Invalid Content-Type'}, status=400)
         data = JSONParser().parse(request)
         print('test2')
         serializer = UserSerializer(data=data, mbti="test")
