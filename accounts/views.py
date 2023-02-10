@@ -15,6 +15,7 @@ def account(request):
 
     elif request.method == 'POST':
         print('test')
+        print(request)
         data = JSONParser().parse(request)
         print('test2')
         serializer = UserSerializer(data=data, mbti="test")
