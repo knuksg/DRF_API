@@ -1,0 +1,15 @@
+[Unit]
+Description=uWSGI service
+
+[Service]
+ExecStart=/home/ubuntu/DRF_API/venv/bin/uwsgi -i /home/ubuntu/DRF_API/config/uwsgi/uwsgi.ini
+; ExecStart=/home/ubuntu/DRF_API/venv/bin/uwsgi --http :8000 --home /home/ubuntu/DRF_API/venv --chdir /home/ubuntu/DRF_API --wsgi-file /home/ubuntu/DRF_API/config/uwsgi/wsgi.py
+
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
