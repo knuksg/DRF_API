@@ -19,12 +19,9 @@ def account(request):
         data = JSONParser().parse(request)
         data['mbti'] = None
         serializer = UserSerializer(data=data)
-        print('test3')
         if serializer.is_valid():
-            print('test4')
             serializer.save()
             return JsonResponse(serializer.data, status=201)
-        print('test5')
         return JsonResponse(serializer.errors, status=400)
 
 @csrf_exempt
