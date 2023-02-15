@@ -3,7 +3,7 @@ Description=uWSGI service
 After=syslog.target
 
 [Service]
-ExecStart=/home/ubuntu/DRF_API/venv/bin/uwsgi -i /home/ubuntu/DRF_API/config/uwsgi/uwsgi.ini
+ExecStart=/home/talk_flyingstone/pyWork/DRF_API/venv/bin/uwsgi -i /home/talk_flyingstone/pyWork/DRF_API/config/uwsgi/uwsgi.ini
 
 Restart=always
 KillSignal=SIGQUIT
