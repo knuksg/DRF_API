@@ -34,6 +34,7 @@ def account_detail(request, user_email):
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
+        data['email'] = request.PUT.get('email')
         serializer = UserSerializer(obj, data=data)
         if serializer.is_valid():
             print('success!')
