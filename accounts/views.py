@@ -4,6 +4,7 @@ from .models import User
 from .serializers import UserSerializer
 from django.http import HttpResponse, JsonResponse
 from rest_framework.parsers import JSONParser
+import json
 
 # Create your views here.
 @csrf_exempt
@@ -26,17 +27,15 @@ def account(request):
 
 @csrf_exempt
 def account_detail(request, user_email):
-    obj = User.objects.get(email=user_email)
+    user = User.objects.get(email=user_email)
 
     if request.method == 'GET':
-        serializer = UserSerializer(obj)
+        serializer = UserSerializer(user)
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)
-        print(request.PUT.get('email'))
-        data['email'] = request.PUT.get('email')
-        serializer = UserSerializer(obj, data=data)
+        serializer = UserSerializer(user, data=data, partial=True)
         if serializer.is_valid():
             print('success!')
             serializer.save()
@@ -44,5 +43,5 @@ def account_detail(request, user_email):
         return JsonResponse(serializer.errors, status=400)
 
     elif request.method == 'DELETE':
-        obj.delete()
+        user.delete()
         return HttpResponse(status=204)
