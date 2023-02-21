@@ -19,13 +19,9 @@ def event_list(request, user_email):
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         data['user'] = user.pk
-        print(data)
         serializer = CalendaarEventSerializer(data=data)
-        print('2')
         if serializer.is_valid():
-            print('3')
             serializer.save()
-            print('4')
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

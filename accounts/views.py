@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from .models import User
@@ -16,12 +17,17 @@ def account(request):
         return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
+        print(1)
         # 회원 가입
         data = JSONParser().parse(request)
         data['mbti'] = None
-        serializer = UserSerializer(data=data)
+        print(data)
+        serializer = UserSerializer(data=data, partial=True)
+        print(serializer)
         if serializer.is_valid():
+            print('4')
             serializer.save()
+            print('5')
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 

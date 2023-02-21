@@ -79,8 +79,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql', # mysqlclient librarly 설치
-        'NAME': 'mbtidb',
-        'USER': 'test',
+        'NAME': 'wup_db',
+        'USER': 'talk_flyingstone',
         'PASSWORD': 'flyingstone', # mariaDB 설치 시 입력한 root 비밀번호 입력
         'HOST': '3.39.63.12',
         'PORT': '3306'
@@ -130,3 +130,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = "accounts.User"
+
+# 유저 한글 이름 입력을 위함.
+DEFAULT_CHARSET = "utf-8"
+FILE_CHARSET = 'utf-8'
