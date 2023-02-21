@@ -5,6 +5,6 @@ from .models import CalendarEvent
 class CalendarEventAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'start', 'end', 'user']
     list_filter = ['user']
-    search_fields = ['title', 'description', 'user__email']
-    date_hierarchy = 'start'
+    search_fields = ['title', 'user__email']
+    # date_hierarchy = 'start'
     ordering = ['start']
