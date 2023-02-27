@@ -7,6 +7,7 @@ class CalendarEvent(models.Model):
     title = models.CharField(max_length=300)
     start = models.DateTimeField()
     end = models.DateTimeField()
+    isAllDay = models.BooleanField()
 
     def __str__(self):
         return self.title
