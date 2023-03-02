@@ -19,9 +19,11 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=30)
+    gender = models.CharField(max_length=30, blank=True, null=True)
+    birthday = models.CharField(max_length=30, blank=True, null=True)
+    height = models.CharField(max_length=30, blank=True, null=True)
+    weight = models.CharField(max_length=30, blank=True, null=True)
     mbti = models.CharField(max_length=100, blank=True, null=True)
-    height = models.CharField(max_length=30)
-    weight = models.CharField(max_length=30)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_staff = models.BooleanField(default=False)
