@@ -23,5 +23,6 @@ urlpatterns = [
     path('wup/mbti/', include('mbti.urls')),
     path('wup/accounts/', include('accounts.urls')),
     path('wup/calendars/', include('calendars.urls')),
+    path('wup/chatgpt/', include('chatgpt.urls')),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'accounts',
     'mbti',
     'calendars',
+    'chatgpt',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
