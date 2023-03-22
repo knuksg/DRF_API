@@ -10,7 +10,7 @@ from rest_framework.parsers import JSONParser
 import json
 
 # Create your views here.
-@login_required
+# @login_required
 @csrf_exempt
 def chatgpt(request, user_email):
     user = User.objects.get(email=user_email)
