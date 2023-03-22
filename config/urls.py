@@ -19,9 +19,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('mbti/', include('mbti.urls')),
-    path('accounts/', include('accounts.urls')),
-    path('calendars/', include('calendars.urls')),
+    path('wup/admin/', admin.site.urls),
+    path('wup/mbti/', include('mbti.urls')),
+    path('wup/accounts/', include('accounts.urls')),
+    path('wup/calendars/', include('calendars.urls')),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
