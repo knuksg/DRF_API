@@ -7,7 +7,7 @@ class MessageInline(admin.StackedInline):
 
 class ConversationAdmin(admin.ModelAdmin):
     inlines = [MessageInline]
-    list_display = ('user', 'created_at', 'updated_at')
+    list_display = ('user',)
     search_fields = ['user__username', 'Conversation__conversation']
 
 admin.site.register(Conversation, ConversationAdmin)
