@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import user_passes_test
 from .models import User
 from .serializers import UserSerializer
 from django.http import HttpResponse, JsonResponse
@@ -8,6 +9,7 @@ from rest_framework.parsers import JSONParser
 import json
 
 # Create your views here.
+@user_passes_test(lambda user: user.is_staff)
 @csrf_exempt
 def account(request):
     if request.method == 'GET':
