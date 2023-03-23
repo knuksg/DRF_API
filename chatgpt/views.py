@@ -33,7 +33,7 @@ def chatgpt(request, user_email):
     elif request.method == 'PUT':
         # 대화 추가
         data = JSONParser().parse(request)
-        conversation.data.append(data['data'])
+        conversation.conversation += '\n' + data['conversation']
         conversation.save()
         serializer = ConversationSerializer(conversation)
         return JsonResponse(serializer.data, status=200)
